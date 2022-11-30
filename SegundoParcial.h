@@ -5,20 +5,22 @@
 class SegundoParcial
 {
 private:
-	int _pAprobados, _pDesaprobados, _idCurso;
+	int  _idCurso;
+	float _pAprobados, _pDesaprobados;
 public:
 	//FUNCIONES PARCIAL
 	void alumnosDesaprobados();
 	void peorCurso();
 	void verGeneraciones();
 	void generarReporte();
+	void mostrarReporte();
 
 	//METODOS DE CLASE
-	void setPorcentajeAprobados(int porcentajeAprobados) { _pAprobados = porcentajeAprobados; }
-	void setPorcentajeDesaprobados(int porcentajeDesaprobados) { _pDesaprobados = porcentajeDesaprobados; }
+	void setPorcentajeAprobados(float porcentajeAprobados) { _pAprobados = porcentajeAprobados; }
+	void setPorcentajeDesaprobados(float porcentajeDesaprobados) { _pDesaprobados = porcentajeDesaprobados; }
 	void setIdCurso(int idCurso) { _idCurso = idCurso; }
-	int getPorcentajeAprobados() { return _pAprobados; }
-	int getPorcentajeDesaprobados() { return _pDesaprobados; }
+	float getPorcentajeAprobados() { return _pAprobados; }
+	float getPorcentajeDesaprobados() { return _pDesaprobados; }
 	int getIdCurso() { return _idCurso; }
 };
 
@@ -26,3 +28,4 @@ public:
 int buscarMayorVector(int* vCursos, int cant);
 bool guardar(SegundoParcial& sp);
 bool leerTodos(SegundoParcial* vSp, int cantidad);
+int getCantidadArchivo();

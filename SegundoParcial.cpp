@@ -181,23 +181,38 @@ void SegundoParcial::generarReporte()
 		int total=0, desaprobados=0;
 		if (mCursos[x][2] == 0) {
 			total = mCursos[x][1];
-			desaprobados = mCursos[x][0] - total;
+			desaprobados =  total - mCursos[x][0];
+			float pAprobados = (static_cast<float>(mCursos[x][0]) / total)*100;
+			float pDesaprobados = (static_cast<float>(desaprobados) / total)*100;
+
+			sp.setIdCurso(x + 1);
+			sp.setPorcentajeAprobados(pAprobados);
+			sp.setPorcentajeDesaprobados(pDesaprobados);
+			if (guardar(sp)) std::cout << "Guardado correctamente." << std::endl;
 		}
-		int pAprobados = mCursos[x][0]/total;
-		int pDesaprobados = desaprobados / total;
-		/*std::cout << "El porcentaje de aprobados del curso " << x + 1 << " es: " << pAprobados << std::endl;
-		std::cout << "El porcentaje de desaprobados del curso " << x + 1 << " es: " << pDesaprobados << std::endl;*/
-		sp.setIdCurso(x + 1);
-		sp.setPorcentajeAprobados(pAprobados);
-		sp.setPorcentajeDesaprobados(pDesaprobados);
-		if (guardar(sp)) std::cout << "Guardado correctamente." << std::endl;
-
 	}
-
-
-
-
 	delete[] totalInscripciones;
+}
+
+void SegundoParcial::mostrarReporte()
+{
+	int cantArchivo = getCantidadArchivo();
+	//std::cout << cantArchivo << std::endl;
+	if (cantArchivo > 0) {
+		SegundoParcial* vSp = new SegundoParcial[cantArchivo];
+		if (vSp == nullptr) {
+			std::cout << "No se pudo crear vector dinamico." << std::endl;
+			return;
+		}
+		leerTodos(vSp, cantArchivo);
+		for (int x = 0;x < cantArchivo;x++) {
+			std::cout << "Curso: " << vSp[x].getIdCurso() << std::endl;
+			std::cout << "Porcentaje de Aprobados: " << vSp[x].getPorcentajeAprobados()<<"%." << std::endl;
+			std::cout << "Porcentaje de Desaprobados: " << vSp[x].getPorcentajeDesaprobados() << "%." << std::endl;
+			std::cout << std::endl;
+		}
+	}
+	else std::cout << "No hay registros en el archivo." << std::endl;
 }
 
 //FUNCIONES AUXILIARES
@@ -233,5 +248,15 @@ bool leerTodos(SegundoParcial* vSp, int cantidad)
 	fread(vSp, sizeof(SegundoParcial), cantidad, p);
 	fclose(p);
 	return true;
+}
+
+int getCantidadArchivo()
+{
+	FILE* p = fopen("reportes.dat", "rb");
+	if (p == nullptr) return 0;
+	fseek(p, 0, 2);
+	int cant = ftell(p) / sizeof(SegundoParcial);
+	fclose(p);
+	return cant;
 }
 

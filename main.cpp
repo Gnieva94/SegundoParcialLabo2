@@ -10,5 +10,7 @@ int main() {
 	sp.peorCurso();
 	cout << endl;*/
 	//sp.verGeneraciones();
+	sp.generarReporte();
+	sp.mostrarReporte();
   return 0;
 }
