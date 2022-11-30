@@ -4,7 +4,7 @@ using namespace std;
 #include "SegundoParcial.h"
 
 int main() {
-	SegundoParcial sp;
+	//SegundoParcial sp;
 	/*sp.alumnosDesaprobados();
 	cout << endl;
 	sp.peorCurso();

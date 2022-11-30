@@ -36,6 +36,12 @@
     <ClCompile Include="SegundoParcial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CuentaBancaria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CajaAhorro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Estudiante.h">
@@ -54,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SegundoParcial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CuentaBancaria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CajaAhorro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
